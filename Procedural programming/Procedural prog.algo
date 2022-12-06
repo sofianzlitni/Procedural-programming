@@ -1,0 +1,27 @@
+PROCEDURE dot_product(v1, v2: ARRAY_OF INTEGER; VAR ps: INTEGER);
+VAR 
+    i: INTEGER;
+BEGIN
+    ps := 0;
+    FOR i := 0 to length(v1) - 1 DO
+        ps := ps + (v1[i] * v2[i]);
+END
+
+PROCEDURE check_orthogonal(vectors: ARRAY of ARRAY of INTEGER);
+VAR
+    i, j: INTEGER;
+    dot_product: INTEGER;
+BEGIN
+    FOR i := 0 to length(vectors) - 1 DO
+    BEGIN
+        FOR j := 0 to length(vectors) - 1 DO
+        BEGIN
+            dot_product(vectors[i], vectors[j], dot_product);
+            IF dot_product = 0 THEN
+                Writeln(i, ' and ', j, ' are orthogonal');
+        END_FOR
+        END_FOR
+    END
+END
+
+FUNCTION dot_product(v1, v2: ARRAY_OF INTEGER): INTEGER;
